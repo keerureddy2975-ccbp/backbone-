@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Farm Labour Connect | గ్రామ వ్యవసాయ కూలీల అనుసంధానం</title>
+
+  <!-- Bootstrap 5.3 CSS for Clean Mobile Responsiveness -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Noto Sans Telugu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ============================================================== -->
+  <!-- CSS STYLING (Inside <style> tag in <head>)                    -->
+  <!-- ============================================================== -->
+  <style>
+    :root {
+      --primary-green: #1b5e20;
+      --primary-green-hover: #144617;
+      --secondary-green: #2e7d32;
+      --light-green: #e8f5e9;
+      --accent-yellow: #fbc02d;
+      --light-yellow: #fffde7;
+      --warm-yellow-card: #fef9c3;
+      --text-dark: #212529;
+      --text-muted: #555555;
+      --bg-light: #f7faf7;
+      --white: #ffffff;
+      --card-shadow: 0 4px 16px rgba(27, 94, 32, 0.08);
+      --card-shadow-hover: 0 8px 24px rgba(27, 94, 32, 0.16);
+      --border-radius: 14px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top Quick Evaluator Bar */
+    .demo-bar-strip {
+      background: linear-gradient(90deg, #fff9c4 0%, #fef08a 100%);
+      border-bottom: 1px solid #facc15;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .demo-bar-pill {
+      background: white;
+      border: 1px solid #eab308;
+      color: #713f12;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 16px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .demo-bar-pill:hover {
+      background: #fef08a;
+      color: #000;
+    }
+
+    /* Navigation Bar */
+    .navbar-farm {
+      background-color: var(--primary-green) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      padding: 0.75rem 1rem;
+    }
+
+    .navbar-farm .navbar-brand {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .navbar-farm .nav-link {
+      color: #f1f8e9 !important;
+      font-weight: 500;
+      padding: 0.5rem 0.85rem !important;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .navbar-farm .nav-link:hover, .navbar-farm .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.18);
+      color: #ffffff !important;
+    }
+
+    /* Bilingual Toggle Button */
+    .btn-lang-toggle {
+      background-color: var(--light-yellow);
+      color: #333333;
+      border: 1px solid var(--accent-yellow);
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      transition: transform 0.15s ease;
+      user-select: none;
+    }
+
+    .btn-lang-toggle:hover {
+      background-color: #fef08a;
+      transform: scale(1.03);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(180deg, #e8f5e9 0%, #f7faf7 100%);
+      padding: 3rem 1rem 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #c8e6c9;
+    }
+
+    .hero-title {
+      color: var(--primary-green);
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    /* Two Main Action Cards */
+    .action-choice-card {
+      background: #ffffff;
+      border-radius: var(--border-radius);
+      border: 2px solid transparent;
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .action-choice-card.card-labourer {
+      border-color: #81c784;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f8e9 100%);
+    }
+
+    .action-choice-card.card-farmer {
+      border-color: #ffd54f;
+      background: linear-gradient(180deg, #ffffff 0%, #fffde7 100%);
+    }
+
+    .action-choice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .action-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .action-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 0.6rem;
+    }
+
+    .btn-big-action {
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: opacity 0.2s;
+    }
+
+    .btn-labourer { background-color: var(--primary-green); color: #ffffff; }
+    .btn-labourer:hover { background-color: var(--primary-green-hover); color: #fff; }
+    .btn-farmer { background-color: #d97706; color: #ffffff; }
+    .btn-farmer:hover { background-color: #b45309; color: #fff; }
+
+    /* Stat Cards */
+    .stat-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 1.3rem;
+      text-align: center;
+      border-top: 4px solid var(--primary-green);
+      box-shadow: var(--card-shadow);
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-green);
+    }
+
+    /* Badges & Tags */
+    .badge-demo {
+      background-color: #fef08a;
+      color: #854d0e;
+      border: 1px solid #fde047;
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .badge-new {
+      background-color: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .wage-badge {
+      background-color: #fef9c3;
+      color: #713f12;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #fde047;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .skill-tag {
+      background-color: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #c8e6c9;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      display: inline-block;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Forms */
+    .farm-form-container {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      padding: 2.2rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .btn-primary-farm {
+      background-color: var(--primary-green);
+      border-color: var(--primary-green);
+      color: white;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      width: 100%;
+      border: none;
+    }
+
+    .btn-primary-farm:hover {
+      background-color: var(--primary-green-hover);
+      color: white;
+    }
+
+    .privacy-banner {
+      background-color: #f0fdf4;
+      border-left: 5px solid #16a34a;
+      border-radius: 10px;
+      padding: 0.85rem 1.15rem;
+      font-size: 0.92rem;
+      color: #14532d;
+    }
+
+    .prototype-disclaimer {
+      background-color: #fefce8;
+      border: 1px dashed #ca8a04;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      color: #854d0e;
+    }
+
+    /* Job and Labourer Cards */
+    .farm-job-card, .labourer-profile-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      border: 1px solid #e2e8f0;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* SPA View Switching */
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background-color: #1b5e20;
+      color: #e8f5e9;
+      margin-top: auto;
+      padding: 1.75rem 1rem;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================== -->
+  <!-- 1. TOP DEMO EVALUATOR BAR                                      -->
+  <!-- ============================================================== -->
+  <div class="demo-bar-strip d-flex flex-wrap align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2 mb-1 mb-md-0">
+      <span class="badge bg-warning text-dark fw-bold">🎓 College Project Demo</span>
+      <span class="text-secondary small d-none d-md-inline">Click a role to test instantly:</span>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <button class="demo-bar-pill" onclick="App.loginDemo('farmer')">🚜 Test as Farmer (Venkata Rao)</button>
+      <button class="demo-bar-pill" onclick="App.loginDemo('labourer')">🌾 Test as Labourer (Lakshmi Devi)</button>
+      <button class="demo-bar-pill" onclick="App.loginDemo('admin')">🛡️ Test as Admin</button>
+      <button class="demo-bar-pill text-danger border-danger" onclick="App.resetDemoData()">🔄 Reset Demo Data</button>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 2. MAIN NAVIGATION BAR                                         -->
+  <!-- ============================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-farm sticky-top">
+    <div class="container">
+      <div class="navbar-brand" onclick="App.showView('home')">
+        <span style="font-size: 1.6rem;">🌾</span>
+        <span>
+          <strong>Village Farm Labour Connect</strong>
+          <small class="d-block text-white-50" style="font-size: 0.72rem; font-weight: normal;">రైతులకు - కూలీలకు వారధి</small>
+        </span>
+      </div>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#farmNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="farmNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+          <li class="nav-item">
+            <a class="nav-link active" id="nav-home" onclick="App.showView('home')">🏠 Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-jobs" onclick="App.showView('jobs')">🌾 Find Farm Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-labourers" onclick="App.showView('labourers')">🚜 Find Workers</a>
+          </li>
+          <li class="nav-item d-none" id="nav-post-job-li">
+            <a class="nav-link" id="nav-post-job" onclick="App.showView('post-job')">➕ Post a Job</a>
+          </li>
+          <li class="nav-item d-none" id="nav-my-jobs-li">
+            <a class="nav-link" id="nav-my-jobs" onclick="App.showView('my-jobs')">📋 My Posted Jobs</a>
+          </li>
+          <li class="nav-item d-none" id="nav-my-apps-li">
+            <a class="nav-link" id="nav-my-apps" onclick="App.showView('my-applications')">📝 My Work Requests</a>
+          </li>
+          <li class="nav-item d-none" id="nav-admin-li">
+            <a class="nav-link text-warning fw-bold" id="nav-admin" onclick="App.showView('admin')">🛡️ Admin Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav-about" onclick="App.showView('about')">ℹ️ Project Guide</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+          <!-- Language Toggle Button -->
+          <button class="btn-lang-toggle" onclick="App.toggleLanguage()" id="btn-lang-toggle">
+            🌐 <span>తెలుగు (Telugu)</span>
+          </button>
+
+          <!-- User State & Auth Buttons -->
+          <div id="auth-buttons" class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-light fw-bold" onclick="App.showView('login')">🔑 Login</button>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-warning text-dark fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">✨ Register</button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item py-2" onclick="App.showView('register-labourer')">🌾 <strong>Register as Labourer</strong></a></li>
+                <li><a class="dropdown-item py-2" onclick="App.showView('register-farmer')">🚜 <strong>Register as Farmer</strong></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="user-profile-badge" class="dropdown d-none">
+            <button class="btn btn-sm btn-outline-light dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown">
+              <span id="user-display-name">User</span>
+              <span class="badge bg-warning text-dark ms-1" id="user-display-role">Role</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li class="dropdown-header">
+                <strong id="user-drop-name">User Name</strong><br>
+                <small class="text-muted" id="user-drop-loc">Village</small>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" onclick="App.logout()">🚪 Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================== -->
+  <!-- 3. TOAST & ALERT MESSAGES CONTAINER                            -->
+  <!-- ============================================================== -->
+  <div class="container mt-3" id="alert-container"></div>
+
+  <!-- ============================================================== -->
+  <!-- 4. VIEW SECTIONS (SINGLE-PAGE APPLICATION)                     -->
+  <!-- ============================================================== -->
+  <main class="flex-grow-1 mb-5">
+
+    <!-- VIEW 1: HOME PAGE -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-section">
+        <div class="container">
+          <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill fw-bold mb-3" id="hero-tagline">
+            🌱 రైతులకు - కూలీలకు వారధి
+          </span>
+          <h1 class="hero-title" id="hero-title">Village Farm Labour Connect</h1>
+          <p class="hero-subtitle" id="hero-subtitle">
+            Directly connecting agricultural labourers who need work with farmers who need workers in rural villages.
+          </p>
+
+          <!-- Two Main Action Choice Cards (Core Requirement) -->
+          <div class="row g-4 justify-content-center mt-2 mb-4">
+            
+            <!-- Option 1: Find Farm Work (For Labourers) -->
+            <div class="col-12 col-md-6 col-lg-5">
+              <div class="action-choice-card card-labourer">
+                <div>
+                  <div class="action-icon">🌾</div>
+                  <h2 class="action-title" id="card-labourer-title">Find Farm Work</h2>
+                  <p class="text-muted" id="card-labourer-desc">
+                    Are you an agricultural labourer looking for daily work? Browse farm jobs in nearby villages and apply with one click.
+                  </p>
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn-big-action btn-labourer" onclick="App.showView('jobs')" id="card-labourer-btn">
+                    🔍 Search Farm Jobs
+                  </button>
+                  <button class="btn btn-outline-success fw-bold py-2" onclick="App.showView('register-labourer')">
+                    ✍️ Register as Labourer (నమోదు)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Option 2: Find Workers (For Farmers) -->
+            <div class="col-12 col-md-6 col-lg-5">
+              <div class="action-choice-card card-farmer">
+                <div>
+                  <div class="action-icon">🚜</div>
+                  <h2 class="action-title" style="color: #b45309;" id="card-farmer-title">Find Workers</h2>
+                  <p class="text-muted" id="card-farmer-desc">
+                    Are you a farmer in need of agricultural workers for harvesting, transplanting, or weeding? Post jobs or contact labourers.
+                  </p>
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn-big-action btn-farmer" onclick="App.showView('labourers')" id="card-farmer-btn">
+                    👥 Find Labourers
+                  </button>
+                  <button class="btn btn-outline-warning text-dark fw-bold py-2" onclick="App.showView('register-farmer')">
+                    ✍️ Register as Farmer (రైతు నమోదు)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Privacy & Prototype Disclaimer Banner -->
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="privacy-banner text-start d-flex align-items-center gap-3 mb-2">
+                <span style="font-size: 1.5rem;">🔒</span>
+                <div>
+                  <strong>Privacy Protected:</strong>
+                  Phone numbers are masked by default and only revealed upon mutual job match confirmation.
+                </div>
+              </div>
+              <div class="prototype-disclaimer text-start">
+                ⚠️ <strong>Student Prototype Notice:</strong> This project is a college prototype running entirely in your browser using <code>localStorage</code> for local demo persistence. It does not use external payment systems or claim production cloud compliance.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Live Statistics Counters -->
+      <div class="container my-5">
+        <div class="row g-3">
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-number" id="stat-labourers-count">0</div>
+              <div class="text-muted fw-bold">🌾 Registered Labourers</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card" style="border-top-color: #d97706;">
+              <div class="stat-number" style="color: #d97706;" id="stat-farmers-count">0</div>
+              <div class="text-muted fw-bold">🚜 Registered Farmers</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card" style="border-top-color: #0284c7;">
+              <div class="stat-number" style="color: #0284c7;" id="stat-jobs-count">0</div>
+              <div class="text-muted fw-bold">💼 Active Farm Jobs</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card" style="border-top-color: #16a34a;">
+              <div class="stat-number" style="color: #16a34a;" id="stat-villages-count">0</div>
+              <div class="text-muted fw-bold">📍 Villages Connected</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-Step How It Works Guide -->
+      <div class="container my-5">
+        <div class="text-center mb-4">
+          <h3 class="fw-bold text-success">How Village Farm Connect Works</h3>
+          <p class="text-muted">Simple 3-step process tailored for rural community members</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 border shadow-sm h-100">
+              <div class="badge bg-success-subtle text-success p-2 mb-2 fw-bold fs-5">Step 1</div>
+              <h5 class="fw-bold text-success">Simple Registration</h5>
+              <p class="text-muted mb-0">Labourers register with their skills; farmers register with their village land details.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 border shadow-sm h-100">
+              <div class="badge bg-warning-subtle text-warning-emphasis p-2 mb-2 fw-bold fs-5">Step 2</div>
+              <h5 class="fw-bold text-warning-emphasis">Post or Search Jobs</h5>
+              <p class="text-muted mb-0">Farmers post daily work openings with wage. Labourers search and express interest.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 border shadow-sm h-100">
+              <div class="badge bg-primary-subtle text-primary p-2 mb-2 fw-bold fs-5">Step 3</div>
+              <h5 class="fw-bold text-primary">Direct Connection</h5>
+              <p class="text-muted mb-0">Farmers accept applicants and call them directly. No middleman commission!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Jobs Preview on Home Page -->
+      <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+          <h3 class="fw-bold text-success mb-0">🌿 Recent Farm Job Openings</h3>
+          <button class="btn btn-outline-success fw-bold" onclick="App.showView('jobs')">View All Jobs →</button>
+        </div>
+        <div class="row g-3" id="home-recent-jobs-container"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: JOB LISTINGS & FILTER -->
+    <section id="view-jobs" class="view-section">
+      <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div>
+            <h2 class="fw-bold text-success mb-1">🌾 Available Farm Jobs</h2>
+            <p class="text-muted mb-0">Search and filter jobs by village, work type, or date. Click "Express Interest" to apply.</p>
+          </div>
+          <div id="post-job-cta"></div>
+        </div>
+
+        <!-- Filter Card -->
+        <div class="card shadow-sm border-0 mb-4 p-3 bg-light border-start border-4 border-warning">
+          <div class="row g-2 align-items-end">
+            <div class="col-12 col-md-4">
+              <label class="small fw-bold text-secondary mb-1">🔍 Search by keyword</label>
+              <input type="text" class="form-control form-control-sm" id="filter-jobs-keyword" placeholder="e.g. Paddy, Transplanting, Kankipadu..." oninput="App.renderJobsList()">
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="small fw-bold text-secondary mb-1">📍 Village</label>
+              <select class="form-select form-select-sm" id="filter-jobs-village" onchange="App.renderJobsList()"></select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="small fw-bold text-secondary mb-1">🛠️ Work Type</label>
+              <select class="form-select form-select-sm" id="filter-jobs-worktype" onchange="App.renderJobsList()"></select>
+            </div>
+            <div class="col-12 col-md-2 d-flex gap-1">
+              <button class="btn btn-sm btn-success fw-bold flex-grow-1" onclick="App.renderJobsList()">Filter</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="App.resetJobFilters()" title="Reset">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 text-muted fw-semibold" id="jobs-count-text">Showing jobs...</div>
+        <div class="row g-3" id="jobs-cards-container"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: LABOURERS DIRECTORY (FARMER'S VIEW) -->
+    <section id="view-labourers" class="view-section">
+      <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <div>
+            <h2 class="fw-bold text-success mb-1">🚜 Registered Village Labourers</h2>
+            <p class="text-muted mb-0">Browse agricultural workers, their skills, and availability.</p>
+          </div>
+        </div>
+
+        <div class="privacy-banner d-flex align-items-center gap-2 mb-4">
+          <span style="font-size: 1.3rem;">🔒</span>
+          <div>
+            <strong>Privacy Protection Active:</strong>
+            Phone numbers are masked to prevent spam. Direct phone numbers unlock when matching through posted jobs.
+          </div>
+        </div>
+
+        <!-- Filter Card -->
+        <div class="card shadow-sm border-0 mb-4 p-3 bg-light border-start border-4 border-success">
+          <div class="row g-2 align-items-end">
+            <div class="col-12 col-md-5">
+              <label class="small fw-bold text-secondary mb-1">🛠️ Filter by Agricultural Skill</label>
+              <select class="form-select form-select-sm" id="filter-labourers-skill" onchange="App.renderLabourersList()"></select>
+            </div>
+            <div class="col-6 col-md-4">
+              <label class="small fw-bold text-secondary mb-1">📍 Village</label>
+              <select class="form-select form-select-sm" id="filter-labourers-village" onchange="App.renderLabourersList()"></select>
+            </div>
+            <div class="col-6 col-md-3 d-flex gap-1">
+              <button class="btn btn-sm btn-success fw-bold flex-grow-1" onclick="App.renderLabourersList()">Filter</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="App.resetLabourerFilters()">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 text-muted fw-semibold" id="labourers-count-text">Showing labourers...</div>
+        <div class="row g-3" id="labourers-cards-container"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: LABOURER REGISTRATION FORM -->
+    <section id="view-register-labourer" class="view-section">
+      <div class="container my-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10">
+            <div class="text-center mb-4">
+              <span class="badge bg-success-subtle text-success border border-success fw-bold px-3 py-1 mb-2">🌾 Labourer Registration</span>
+              <h2 class="fw-bold text-success">Register as Agricultural Labourer</h2>
+              <p class="text-muted">Register your skills so nearby farmers can offer you daily farm work.</p>
+            </div>
+
+            <div class="farm-form-container">
+              <form id="form-labourer-reg" onsubmit="App.handleLabourerRegister(event)">
+                <h5 class="fw-bold text-success border-bottom pb-2 mb-3">👤 1. Full Name & Contact</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" id="labourer-name" placeholder="e.g. Lakshmi Devi / లక్ష్మి" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Mobile Number (10 Digits) *</label>
+                    <input type="tel" class="form-control" id="labourer-phone" placeholder="e.g. 9876543210" maxlength="10" required>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Village Name *</label>
+                    <input type="text" class="form-control" id="labourer-village" placeholder="e.g. Kankipadu" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Mandal / District</label>
+                    <input type="text" class="form-control" id="labourer-mandal" placeholder="e.g. Krishna District">
+                  </div>
+                </div>
+
+                <h5 class="fw-bold text-success border-bottom pb-2 mb-3 mt-4">🛠️ 2. Select Your Work Skills *</h5>
+                <div class="row g-2 mb-3 bg-light p-3 rounded border" id="labourer-skills-checkboxes"></div>
+
+                <h5 class="fw-bold text-success border-bottom pb-2 mb-3 mt-4">💰 3. Daily Wage & Availability</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Expected Daily Wage (₹ / day) *</label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-white fw-bold">₹</span>
+                      <input type="number" class="form-control" id="labourer-wage" value="600" min="100" max="5000" required>
+                      <span class="input-group-text">/ day</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Availability Status *</label>
+                    <select class="form-select" id="labourer-availability">
+                      <option value="Available Today" selected>🟢 Available Today</option>
+                      <option value="Available This Week">🟡 Available This Week</option>
+                      <option value="Busy">🔴 Currently Busy</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label">Years of Farm Experience</label>
+                    <input type="number" class="form-control" id="labourer-exp" value="5" min="0">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">4-Digit Security PIN *</label>
+                    <input type="password" class="form-control" id="labourer-pin" placeholder="e.g. 1234" required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary-farm py-3">🌾 Complete Labourer Registration</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: FARMER REGISTRATION FORM -->
+    <section id="view-register-farmer" class="view-section">
+      <div class="container my-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10">
+            <div class="text-center mb-4">
+              <span class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2">🚜 Farmer Registration</span>
+              <h2 class="fw-bold text-success">Register as Farmer</h2>
+              <p class="text-muted">Register to post agricultural jobs and connect directly with village labourers.</p>
+            </div>
+
+            <div class="farm-form-container" style="border-top-color: #d97706;">
+              <form id="form-farmer-reg" onsubmit="App.handleFarmerRegister(event)">
+                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">👤 1. Farmer Details</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" id="farmer-name" placeholder="e.g. Venkata Rao" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Mobile Number (10 Digits) *</label>
+                    <input type="tel" class="form-control" id="farmer-phone" placeholder="e.g. 9848011223" maxlength="10" required>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Village Name *</label>
+                    <input type="text" class="form-control" id="farmer-village" placeholder="e.g. Kankipadu" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Mandal / District</label>
+                    <input type="text" class="form-control" id="farmer-mandal" placeholder="e.g. Krishna District">
+                  </div>
+                </div>
+
+                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3 mt-4">🌾 2. Land & Crops</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Total Land (in Acres)</label>
+                    <input type="number" step="0.5" class="form-control" id="farmer-acres" value="5.0">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Farm Name (Optional)</label>
+                    <input type="text" class="form-control" id="farmer-farmname" placeholder="e.g. Sri Venkateswara Farm">
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Main Crops Grown</label>
+                  <div class="row g-2 bg-light p-3 rounded border" id="farmer-crops-checkboxes"></div>
+                </div>
+
+                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3 mt-4">🔒 3. Security</h5>
+                <div class="mb-4">
+                  <label class="form-label">4-Digit Security PIN *</label>
+                  <input type="password" class="form-control" id="farmer-pin" placeholder="e.g. 1234" required>
+                </div>
+
+                <button type="submit" class="btn btn-warning text-dark fw-bold py-3 w-100">🚜 Complete Farmer Registration</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: POST A JOB FORM (FOR FARMERS) -->
+    <section id="view-post-job" class="view-section">
+      <div class="container my-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10">
+            <div class="text-center mb-4">
+              <span class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2">📢 Post Farm Job</span>
+              <h2 class="fw-bold text-success">Create a Farm Job Opening</h2>
+              <p class="text-muted">Specify the crop, work type, date, wage, and number of workers needed.</p>
+            </div>
+
+            <div class="farm-form-container" style="border-top-color: #d97706;">
+              <form id="form-post-job" onsubmit="App.handlePostJob(event)">
+                <h5 class="fw-bold text-success border-bottom pb-2 mb-3">🌾 1. Crop & Agricultural Work Type</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Crop Name *</label>
+                    <select class="form-select" id="job-crop" required></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Work Type *</label>
+                    <select class="form-select" id="job-worktype" required></select>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Work Location (Village) *</label>
+                    <input type="text" class="form-control" id="job-village" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Work Date *</label>
+                    <input type="date" class="form-control" id="job-date" required>
+                  </div>
+                </div>
+
+                <h5 class="fw-bold text-success border-bottom pb-2 mb-3 mt-4">👥 2. Daily Wage & Number of Workers</h5>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Daily Wage Offered (₹ / worker / day) *</label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-white fw-bold">₹</span>
+                      <input type="number" class="form-control" id="job-wage" value="650" min="100" max="5000" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Workers Needed *</label>
+                    <input type="number" class="form-control" id="job-workers" value="6" min="1" max="100" required>
+                  </div>
+                </div>
+
+                <div class="row g-2 mb-3 bg-light p-3 rounded border">
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="job-food" checked>
+                      <label class="form-check-label fw-semibold" for="job-food">🍲 Lunch / Meals Provided</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="job-transport">
+                      <label class="form-check-label fw-semibold" for="job-transport">🚜 Pickup / Transport Arranged</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Additional Instructions / Notes</label>
+                  <textarea class="form-control" id="job-notes" rows="2" placeholder="e.g. Reporting time 7:30 AM at Village Panchayat office. Water provided."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-warning text-dark fw-bold py-3 w-100">📢 Publish Farm Job Opening</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 7: FARMER'S MY POSTED JOBS DASHBOARD -->
+    <section id="view-my-jobs" class="view-section">
+      <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+          <div>
+            <h2 class="fw-bold text-success mb-0">📋 My Posted Jobs & Applicants</h2>
+            <p class="text-muted small">Manage your postings and accept interested labourers to unlock contact details.</p>
+          </div>
+          <button class="btn btn-warning text-dark fw-bold" onclick="App.showView('post-job')">➕ Post New Job</button>
+        </div>
+        <div id="my-jobs-container"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 8: LABOURER'S WORK REQUESTS -->
+    <section id="view-my-applications" class="view-section">
+      <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+          <div>
+            <h2 class="fw-bold text-success mb-0">📝 My Applied Work Requests</h2>
+            <p class="text-muted small">Track status of jobs you expressed interest in.</p>
+          </div>
+          <button class="btn btn-success fw-bold" onclick="App.showView('jobs')">🔍 Search More Jobs</button>
+        </div>
+        <div class="row g-3" id="my-apps-container"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 9: ADMIN DASHBOARD -->
+    <section id="view-admin" class="view-section">
+      <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+          <div>
+            <span class="badge bg-danger text-white fw-bold px-3 py-1 mb-1">🛡️ Admin & Project Evaluator Portal</span>
+            <h2 class="fw-bold text-success mb-0">Administrator Dashboard</h2>
+            <p class="text-muted small">Review all registrations, job postings, and reset prototype demo data.</p>
+          </div>
+          <button class="btn btn-outline-danger btn-sm fw-bold" onclick="App.resetDemoData()">🔄 Reset Sample Demo Data</button>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 border-start border-4 border-success">
+              <div class="small fw-bold text-muted">Total Labourers</div>
+              <div class="h3 fw-bold text-success mb-0" id="admin-stat-labourers">0</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 border-start border-4 border-warning">
+              <div class="small fw-bold text-muted">Total Farmers</div>
+              <div class="h3 fw-bold text-warning mb-0" id="admin-stat-farmers">0</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 border-start border-4 border-info">
+              <div class="small fw-bold text-muted">Active Jobs</div>
+              <div class="h3 fw-bold text-info mb-0" id="admin-stat-jobs">0</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm p-3 border-start border-4 border-primary">
+              <div class="small fw-bold text-muted">Applications</div>
+              <div class="h3 fw-bold text-primary mb-0" id="admin-stat-apps">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4 p-3">
+          <h5 class="fw-bold text-success mb-3">🌾 Registered Labourers</h5>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 small">
+              <thead class="table-light"><tr><th>Name</th><th>Phone</th><th>Village</th><th>Skills</th><th>Wage</th><th>Actions</th></tr></thead>
+              <tbody id="admin-labourers-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4 p-3">
+          <h5 class="fw-bold text-warning mb-3" style="color: #b45309 !important;">🚜 Registered Farmers</h5>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 small">
+              <thead class="table-light"><tr><th>Name</th><th>Phone</th><th>Village</th><th>Land</th><th>Crops</th><th>Actions</th></tr></thead>
+              <tbody id="admin-farmers-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card shadow-sm border-0 p-3">
+          <h5 class="fw-bold text-primary mb-3">💼 All Farm Job Postings</h5>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 small">
+              <thead class="table-light"><tr><th>Crop & Work</th><th>Farmer</th><th>Village</th><th>Date</th><th>Wage</th><th>Actions</th></tr></thead>
+              <tbody id="admin-jobs-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 10: LOGIN PAGE -->
+    <section id="view-login" class="view-section">
+      <div class="container my-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-8">
+            <div class="text-center mb-4">
+              <div style="font-size: 2.5rem;">🌾</div>
+              <h2 class="fw-bold text-success mt-2">Account Login</h2>
+              <p class="text-muted">Enter your registered 10-digit mobile number and PIN</p>
+            </div>
+
+            <div class="farm-form-container">
+              <form id="form-login" onsubmit="App.handleLogin(event)">
+                <div class="mb-3">
+                  <label class="form-label">Mobile Number</label>
+                  <input type="tel" class="form-control" id="login-phone" placeholder="10-digit mobile" maxlength="10" required>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Security PIN</label>
+                  <input type="password" class="form-control" id="login-pin" placeholder="4-digit PIN" required>
+                  <div class="form-text text-muted">PIN for demo accounts is <code>1234</code>.</div>
+                </div>
+                <button type="submit" class="btn btn-primary-farm py-2 mb-3">🔑 Login</button>
+              </form>
+
+              <div class="text-center pt-2 border-top">
+                <p class="text-muted small mb-2">New user? Register below:</p>
+                <div class="d-flex justify-content-center gap-2">
+                  <button class="btn btn-sm btn-outline-success fw-bold" onclick="App.showView('register-labourer')">🌾 Labourer</button>
+                  <button class="btn btn-sm btn-outline-warning text-dark fw-bold" onclick="App.showView('register-farmer')">🚜 Farmer</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Login Box -->
+            <div class="card mt-4 border-warning bg-warning-subtle shadow-sm">
+              <div class="card-body p-3 text-center">
+                <div class="fw-bold text-dark mb-1">🎓 Evaluator 1-Click Quick Login</div>
+                <div class="d-grid gap-2 mt-2">
+                  <button class="btn btn-sm btn-warning text-dark fw-bold" onclick="App.loginDemo('farmer')">🚜 Test as Farmer (Venkata Rao)</button>
+                  <button class="btn btn-sm btn-success fw-bold" onclick="App.loginDemo('labourer')">🌾 Test as Labourer (Lakshmi Devi)</button>
+                  <button class="btn btn-sm btn-dark fw-bold" onclick="App.loginDemo('admin')">🛡️ Test as Admin (Reviewer)</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 11: ABOUT & PROJECT GUIDE -->
+    <section id="view-about" class="view-section">
+      <div class="container my-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="text-center mb-5">
+              <span class="badge bg-success-subtle text-success border border-success fw-bold px-3 py-1 mb-2">🎓 1st Year College Engineering Project</span>
+              <h1 class="fw-bold text-success">Village Farm Labour Connect</h1>
+              <h5 class="text-secondary fw-semibold">గ్రామ వ్యవసాయ కూలీల అనుసంధానం</h5>
+              <p class="text-muted mt-2">All-in-One Standalone Single-File Responsive Web Application</p>
+            </div>
+
+            <div class="card shadow-sm border-0 mb-4 p-4 rounded-4">
+              <h4 class="fw-bold text-success mb-3">🎯 Problem Statement & Rural Context</h4>
+              <p class="text-secondary">
+                In rural agricultural areas, smallholder farmers often face acute labour shortages during peak harvesting and transplanting seasons. Concurrently, village agricultural labourers lack direct visibility into daily wage opportunities in nearby villages, making them dependent on commission-charging middle agents (maistries) who reduce their daily earnings.
+              </p>
+              <p class="text-secondary mb-0">
+                <strong>Village Farm Labour Connect</strong> solves this problem by directly connecting local farmers and agricultural labourers through a modern, mobile-friendly interface designed specifically for rural citizens with basic smartphone literacy.
+              </p>
+            </div>
+
+            <div class="card shadow-sm border-0 mb-4 p-4 rounded-4">
+              <h4 class="fw-bold text-success mb-3">💻 Technical Architecture (Single File Design)</h4>
+              <ul class="text-secondary mb-0">
+                <li><strong>Format:</strong> 100% self-contained in a single file: <code>index.html</code></li>
+                <li><strong>Styling:</strong> Embedded in <code>&lt;style&gt;</code> tag in <code>&lt;head&gt;</code></li>
+                <li><strong>Logic:</strong> Embedded in <code>&lt;script&gt;</code> before <code>&lt;/body&gt;</code></li>
+                <li><strong>Data Layer:</strong> Browser <code>localStorage</code> (for zero-setup student prototype evaluation)</li>
+                <li><strong>Bilingual Engine:</strong> Full English & Telugu (తెలుగు) translation dictionary with real-time UI toggling</li>
+                <li><strong>Privacy:</strong> Phone number masking algorithm with mutual match unlocking</li>
+              </ul>
+            </div>
+
+            <div class="card shadow-sm border-0 p-4 rounded-4 bg-light">
+              <h4 class="fw-bold text-success mb-3">🧪 Step-by-Step Viva Testing Walkthrough</h4>
+              <ol class="text-secondary ps-3 mb-0">
+                <li class="mb-2"><strong>Language Switch:</strong> Click the top button <em>"🌐 తెలుగు (Telugu)"</em> to toggle all text into Telugu, and toggle back to English.</li>
+                <li class="mb-2"><strong>Testing as a Labourer:</strong> Click <em>"🌾 Test as Labourer (Lakshmi Devi)"</em> in the yellow bar. Navigate to <strong>Find Farm Work</strong>, filter by village, and click <strong>"Express Interest"</strong> on an open job. Check <strong>My Work Requests</strong>.</li>
+                <li class="mb-2"><strong>Testing as a Farmer:</strong> Click <em>"🚜 Test as Farmer (Venkata Rao)"</em>. Go to <strong>My Posted Jobs</strong>, review the applicant and click <strong>"✓ Accept"</strong>. Notice that the labourer's direct contact number is unlocked!</li>
+                <li class="mb-2"><strong>Posting a New Job:</strong> Click <strong>Post a Job</strong>, fill in the form (e.g. Chilli Harvesting, ₹700 wage, 5 workers), and submit. Verify that it appears live in the public listings.</li>
+                <li class="mb-2"><strong>Admin Portal:</strong> Click <em>"🛡️ Test as Admin"</em>. Review registered users and jobs, or click <strong>Reset Sample Demo Data</strong> to restore pristine sample records.</li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- 5. FOOTER                                                      -->
+  <!-- ============================================================== -->
+  <footer>
+    <div class="container">
+      <h5 class="fw-bold mb-1">🌾 Village Farm Labour Connect</h5>
+      <p class="mb-1 text-white-50">Connecting rural farmers and agricultural labourers for daily farm work</p>
+      <small class="text-warning">Features: Single-File HTML5 • Bilingual (EN/TE) • localStorage Demo DB • Privacy Masking • Role-Based Access</small>
+      <div class="mt-2 text-white-50 small">
+        © 2026 Village Farm Labour Connect. 1st Year College Engineering Project Prototype.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle (via CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ============================================================== -->
+  <!-- 6. JAVASCRIPT (Inside <script> tag before </body>)             -->
+  <!-- ============================================================== -->
+  <script>
+    /**
+     * Village Farm Labour Connect - Single File Prototype Engine
+     * Uses localStorage for persistent demo evaluation data.
+     */
+
+    const STORAGE_KEY = 'vflc_prototype_db_v1';
+
+    // Standard Agricultural Skills (Bilingual)
+    const SKILLS_DATA = [
+      { id: "paddy_transplanting", en: "Paddy Transplanting (వరి నాట్లు)", te: "వరి నాట్లు వేయడం" },
+      { id: "crop_harvesting", en: "Crop Harvesting (పంట కోత)", te: "పంట కోత కోయడం" },
+      { id: "weeding", en: "Weeding (కలుపు తీయడం)", te: "కలుపు తీయడం" },
+      { id: "pesticide_spraying", en: "Pesticide Spraying (పురుగుమందు పిచికారీ)", te: "పురుగుమందు పిచికారీ చేయడం" },
+      { id: "cotton_picking", en: "Cotton Picking (పత్తి ఏరడం)", te: "పత్తి ఏరడం" },
+      { id: "chilli_plucking", en: "Chilli Plucking (మిర్చి కోత)", te: "మిర్చి కోయడం" },
+      { id: "ploughing_field", en: "Field Ploughing / Tilling (పొలం దున్నడం)", te: "పొలం దున్నడం" },
+      { id: "tractor_driving", en: "Tractor Operation (ట్రాక్టర్ నడపడం)", te: "ట్రాక్టర్ నడపడం" },
+      { id: "sugarcane_cutting", en: "Sugarcane Cutting (చెరకు నరకడం)", te: "చెరకు నరకడం" },
+      { id: "general_labour", en: "General Farm Work (సాధారణ పొలం పనులు)", te: "సాధారణ పొలం పనులు" }
+    ];
+
+    // Standard Crops List
+    const CROPS_DATA = [
+      { en: "Paddy (Rice)", te: "వరి" },
+      { en: "Cotton", te: "పత్తి" },
+      { en: "Chilli", te: "మిర్చి" },
+      { en: "Groundnut", te: "వేరుశనగ" },
+      { en: "Maize (Corn)", te: "మొక్కజొన్న" },
+      { en: "Sugarcane", te: "చెరకు" },
+      { en: "Vegetables", te: "కూరగాయలు" }
+    ];
+
+    // Standard Work Types
+    const WORK_TYPES = [
+      { en: "Harvesting", te: "పంట కోత" },
+      { en: "Transplanting / Sowing", te: "నాట్లు వేయడం" },
+      { en: "Weeding", te: "కలుపు తీయడం" },
+      { en: "Pesticide Spraying", te: "పురుగుమందు పిచికారీ" },
+      { en: "Produce Picking", te: "కాయలు / పత్తి ఏరడం" },
+      { en: "Ploughing / Land Prep", te: "పొలం సిద్ధం చేయడం" }
+    ];
+
+    // Initial Realistic Demo Data for College Project Evaluation
+    const INITIAL_DEMO_DATA = {
+      currentLang: 'en',
+      currentUser: null,
+      users: [
+        { id: 1, name: "College Project Reviewer (Admin)", phone: "9999900000", pin: "1234", role: "admin", village: "Vijayawada Campus", is_demo: true, active: true },
+        { id: 2, name: "Venkata Rao (Farmer)", phone: "9848011223", pin: "1234", role: "farmer", village: "Kankipadu", mandal: "Krishna", acres: 8.5, crops: ["Paddy (Rice)"], is_demo: true, active: true },
+        { id: 3, name: "Ramesh Reddy (Farmer)", phone: "9848022334", pin: "1234", role: "farmer", village: "Ibrahimpatnam", mandal: "Krishna", acres: 14.0, crops: ["Cotton", "Chilli"], is_demo: true, active: true },
+        { id: 4, name: "Lakshmi Devi (Labourer)", phone: "9949011223", pin: "1234", role: "labourer", village: "Kankipadu", mandal: "Krishna", skills: ["Paddy Transplanting (వరి నాట్లు)", "Weeding (కలుపు తీయడం)", "Cotton Picking (పత్తి ఏరడం)"], wage: 550, availability: "Available Today", exp: 7, is_demo: true, active: true },
+        { id: 5, name: "Mallesh Kumar (Labourer)", phone: "9949022334", pin: "1234", role: "labourer", village: "Ibrahimpatnam", mandal: "Krishna", skills: ["Crop Harvesting (పంట కోత)", "Pesticide Spraying (పురుగుమందు పిచికారీ)", "Tractor Operation (ట్రాక్టర్ నడపడం)"], wage: 700, availability: "Available Today", exp: 9, is_demo: true, active: true },
+        { id: 6, name: "Siva Rama Krishna (Labourer)", phone: "9949033445", pin: "1234", role: "labourer", village: "Vuyyuru", mandal: "Krishna", skills: ["Sugarcane Cutting (చెరకు నరకడం)", "Field Ploughing / Tilling (పొలం దున్నడం)"], wage: 650, availability: "Available This Week", exp: 5, is_demo: true, active: true },
+        { id: 7, name: "Nagamani (Labourer)", phone: "9949044556", pin: "1234", role: "labourer", village: "Penamaluru", mandal: "Krishna", skills: ["Chilli Plucking (మిర్చి కోత)", "Cotton Picking (పత్తి ఏరడం)", "Weeding (కలుపు తీయడం)"], wage: 500, availability: "Available Today", exp: 4, is_demo: true, active: true }
+      ],
+      jobs: [
+        { id: 101, farmerId: 2, farmerName: "Venkata Rao (Farmer)", farmerPhone: "9848011223", crop: "Paddy (Rice)", workType: "Transplanting / Sowing", village: "Kankipadu", workDate: "2026-10-18", dailyWage: 600, workersNeeded: 8, foodProvided: true, transportProvided: true, notes: "Morning 7:00 AM start. Fresh lunch provided at canal field.", is_demo: true },
+        { id: 102, farmerId: 2, farmerName: "Venkata Rao (Farmer)", farmerPhone: "9848011223", crop: "Paddy (Rice)", workType: "Harvesting", village: "Kankipadu", workDate: "2026-10-22", dailyWage: 650, workersNeeded: 10, foodProvided: true, transportProvided: false, notes: "Ripe paddy sickle harvesting. Immediate payment.", is_demo: true },
+        { id: 103, farmerId: 3, farmerName: "Ramesh Reddy (Farmer)", farmerPhone: "9848022334", crop: "Cotton", workType: "Produce Picking", village: "Ibrahimpatnam", workDate: "2026-10-19", dailyWage: 550, workersNeeded: 6, foodProvided: false, transportProvided: true, notes: "Auto pickup from Ibrahimpatnam bus stand.", is_demo: true },
+        { id: 104, farmerId: 3, farmerName: "Ramesh Reddy (Farmer)", farmerPhone: "9848022334", crop: "Chilli", workType: "Pesticide Spraying", village: "Ibrahimpatnam", workDate: "2026-10-17", dailyWage: 750, workersNeeded: 3, foodProvided: true, transportProvided: false, notes: "Spraying machines provided. Safety masks included.", is_demo: true }
+      ],
+      applications: [
+        { id: 1, jobId: 101, labourerId: 4, labourerName: "Lakshmi Devi (Labourer)", labourerPhone: "9949011223", labourerVillage: "Kankipadu", status: "Accepted", appliedAt: "2026-10-14 09:30" },
+        { id: 2, jobId: 104, labourerId: 5, labourerName: "Mallesh Kumar (Labourer)", labourerPhone: "9949022334", labourerVillage: "Ibrahimpatnam", status: "Pending", appliedAt: "2026-10-14 11:15" }
+      ]
+    };
+
+    // Main Application Controller Object
+    const App = {
+      data: null,
+
+      init() {
+        this.loadStorage();
+        this.populateDropdownsAndCheckboxes();
+        this.renderStats();
+        this.renderRecentJobsHome();
+        this.renderJobsList();
+        this.renderLabourersList();
+        this.updateAuthUI();
+        this.setupPhoneInputs();
+        this.updateLanguageTexts();
+      },
+
+      loadStorage() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          this.data = JSON.parse(JSON.stringify(INITIAL_DEMO_DATA));
+          this.saveStorage();
+        } else {
+          try {
+            this.data = JSON.parse(raw);
+          } catch (e) {
+            this.data = JSON.parse(JSON.stringify(INITIAL_DEMO_DATA));
+            this.saveStorage();
+          }
+        }
+      },
+
+      saveStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
+      },
+
+      resetDemoData() {
+        if (confirm("Reset prototype data back to initial demo state?")) {
+          this.data = JSON.parse(JSON.stringify(INITIAL_DEMO_DATA));
+          this.saveStorage();
+          this.showAlert("Prototype data restored to clean demo state!", "success");
+          this.init();
+          this.showView('home');
+        }
+      },
+
+      showAlert(message, type = 'info') {
+        const container = document.getElementById('alert-container');
+        container.innerHTML = `
+          <div class="alert alert-${type} alert-dismissible fade show shadow-sm" role="alert">
+            <span>${type === 'success' ? '✅' : type === 'danger' ? '⚠️' : 'ℹ️'}</span>
+            <strong>${message}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        `;
+        setTimeout(() => {
+          const alertEl = container.querySelector('.alert');
+          if (alertEl) {
+            const bsAlert = bootstrap.Alert.getOrCreateInstance(alertEl);
+            if (bsAlert) bsAlert.close();
+          }
+        }, 5000);
+      },
+
+      showView(viewName) {
+        document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+        const target = document.getElementById(`view-${viewName}`);
+        if (target) {
+          target.classList.add('active');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Update nav active link
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => link.classList.remove('active'));
+        const navLink = document.getElementById(`nav-${viewName}`);
+        if (navLink) navLink.classList.add('active');
+
+        // Refresh dynamic view contents
+        if (viewName === 'home') {
+          this.renderStats();
+          this.renderRecentJobsHome();
+        } else if (viewName === 'jobs') {
+          this.renderJobsList();
+        } else if (viewName === 'labourers') {
+          this.renderLabourersList();
+        } else if (viewName === 'my-jobs') {
+          this.renderMyJobs();
+        } else if (viewName === 'my-applications') {
+          this.renderMyApplications();
+        } else if (viewName === 'admin') {
+          this.renderAdminView();
+        }
+      },
+
+      toggleLanguage() {
+        this.data.currentLang = this.data.currentLang === 'en' ? 'te' : 'en';
+        this.saveStorage();
+        this.updateLanguageTexts();
+        this.populateDropdownsAndCheckboxes();
+        this.renderJobsList();
+        this.renderLabourersList();
+        this.renderRecentJobsHome();
+      },
+
+      updateLanguageTexts() {
+        const isTe = this.data.currentLang === 'te';
+        document.getElementById('btn-lang-toggle').innerHTML = isTe ? '🌐 <span>English</span>' : '🌐 <span>తెలుగు (Telugu)</span>';
+        document.getElementById('hero-title').textContent = isTe ? 'గ్రామ వ్యవసాయ కూలీల అనుసంధానం' : 'Village Farm Labour Connect';
+        document.getElementById('hero-subtitle').textContent = isTe 
+          ? 'కూలీ పని కావాల్సిన వ్యవసాయ కూలీలను, పని కోసం కూలీలు కావాల్సిన రైతులను నేరుగా కలిపే సులభమైన వేదిక.' 
+          : 'Directly connecting agricultural labourers who need work with farmers who need workers in rural villages.';
+        document.getElementById('card-labourer-title').textContent = isTe ? '🌾 కూలీ పని కోసం (కూలీలకు)' : '🌾 Find Farm Work';
+        document.getElementById('card-labourer-desc').textContent = isTe 
+          ? 'మీరు వ్యవసాయ కూలీ పనులు వెతుకుతున్నారా? సమీప గ్రామాల్లోని పనులను చూసి ఒకే క్లిక్‌తో దరఖాస్తు చేయండి.' 
+          : 'Are you an agricultural labourer looking for daily work? Browse farm jobs in nearby villages and apply with one click.';
+        document.getElementById('card-farmer-title').textContent = isTe ? '🚜 కూలీల కోసం (రైతులకు)' : '🚜 Find Workers';
+        document.getElementById('card-farmer-desc').textContent = isTe 
+          ? 'మీ పొలంలో నాట్లు, కోతలు, కలుపు లేదా మందు పిచికారీ పనులకు కూలీలు కావాలా? పని వివరాలు నమోదు చేయండి.' 
+          : 'Are you a farmer in need of agricultural workers for harvesting, transplanting, or weeding? Post jobs or contact labourers.';
+      },
+
+      populateDropdownsAndCheckboxes() {
+        const isTe = this.data.currentLang === 'te';
+
+        // 1. Labourer Skills Checkboxes
+        const skillsContainer = document.getElementById('labourer-skills-checkboxes');
+        if (skillsContainer) {
+          skillsContainer.innerHTML = SKILLS_DATA.map((s, idx) => `
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="labourer-skill" value="${s.en}" id="skill_${idx}">
+                <label class="form-check-label fw-semibold" for="skill_${idx}">
+                  ${isTe ? s.te : s.en}
+                </label>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 2. Farmer Crops Checkboxes
+        const cropsContainer = document.getElementById('farmer-crops-checkboxes');
+        if (cropsContainer) {
+          cropsContainer.innerHTML = CROPS_DATA.map((c, idx) => `
+            <div class="col-6 col-md-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="farmer-crop" value="${c.en}" id="crop_${idx}">
+                <label class="form-check-label small fw-semibold" for="crop_${idx}">
+                  ${isTe ? c.te : c.en}
+                </label>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 3. Post Job Form Dropdowns
+        const jobCrop = document.getElementById('job-crop');
+        if (jobCrop) {
+          jobCrop.innerHTML = CROPS_DATA.map(c => `<option value="${c.en}">${isTe ? c.te : c.en}</option>`).join('') + '<option value="Other">Other / ఇతర పంట</option>';
+        }
+
+        const jobWork = document.getElementById('job-worktype');
+        if (jobWork) {
+          jobWork.innerHTML = WORK_TYPES.map(w => `<option value="${w.en}">${isTe ? w.te : w.en}</option>`).join('');
+        }
+
+        // 4. Job Filter Dropdowns
+        const distinctVillages = [...new Set(this.data.jobs.map(j => j.village))];
+        const filterVillage = document.getElementById('filter-jobs-village');
+        if (filterVillage) {
+          filterVillage.innerHTML = '<option value="">All Villages</option>' + distinctVillages.map(v => `<option value="${v}">${v}</option>`).join('');
+        }
+
+        const filterWork = document.getElementById('filter-jobs-worktype');
+        if (filterWork) {
+          filterWork.innerHTML = '<option value="">All Work Types</option>' + WORK_TYPES.map(w => `<option value="${w.en}">${isTe ? w.te : w.en}</option>`).join('');
+        }
+
+        // 5. Labourer Filter Dropdowns
+        const labourerVillages = [...new Set(this.data.users.filter(u => u.role === 'labourer').map(u => u.village))];
+        const filterLabVillage = document.getElementById('filter-labourers-village');
+        if (filterLabVillage) {
+          filterLabVillage.innerHTML = '<option value="">All Villages</option>' + labourerVillages.map(v => `<option value="${v}">${v}</option>`).join('');
+        }
+
+        const filterLabSkill = document.getElementById('filter-labourers-skill');
+        if (filterLabSkill) {
+          filterLabSkill.innerHTML = '<option value="">All Skills</option>' + SKILLS_DATA.map(s => `<option value="${s.en}">${isTe ? s.te : s.en}</option>`).join('');
+        }
+
+        // Set job date default to today
+        const dateInput = document.getElementById('job-date');
+        if (dateInput && !dateInput.value) {
+          dateInput.value = new Date().toISOString().split('T')[0];
+        }
+      },
+
+      setupPhoneInputs() {
+        document.querySelectorAll('input[type="tel"]').forEach(input => {
+          input.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+          });
+        });
+      },
+
+      maskPhone(phone, canView = false) {
+        if (!phone) return "N/A";
+        if (canView) return phone;
+        return phone.slice(0, 5) + "XXXXX";
+      },
+
+      renderStats() {
+        const labourers = this.data.users.filter(u => u.role === 'labourer').length;
+        const farmers = this.data.users.filter(u => u.role === 'farmer').length;
+        const jobs = this.data.jobs.length;
+        const villages = new Set(this.data.users.map(u => u.village)).size;
+
+        document.getElementById('stat-labourers-count').textContent = labourers;
+        document.getElementById('stat-farmers-count').textContent = farmers;
+        document.getElementById('stat-jobs-count').textContent = jobs;
+        document.getElementById('stat-villages-count').textContent = villages;
+      },
+
+      renderRecentJobsHome() {
+        const container = document.getElementById('home-recent-jobs-container');
+        if (!container) return;
+        const recent = this.data.jobs.slice(0, 3);
+        container.innerHTML = recent.map(j => `
+          <div class="col-md-4">
+            <div class="farm-job-card">
+              <div>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="badge bg-success-subtle text-success border border-success fw-bold">🌱 ${j.crop}</span>
+                  <span class="${j.is_demo ? 'badge-demo' : 'badge-new'}">${j.is_demo ? 'SAMPLE DEMO DATA' : 'NEW'}</span>
+                </div>
+                <h5 class="fw-bold mb-1">${j.workType}</h5>
+                <p class="text-muted small mb-2">📍 <strong>${j.village}</strong> • Farmer: ${j.farmerName}</p>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <span class="wage-badge">₹ ${j.dailyWage} / day</span>
+                  <span class="badge bg-light text-dark border">👥 ${j.workersNeeded} needed</span>
+                </div>
+                <div class="small text-secondary mb-3">📅 Date: <strong>${j.workDate}</strong></div>
+              </div>
+              <button class="btn btn-sm btn-outline-success w-100 fw-bold" onclick="App.showView('jobs')">View & Apply</button>
+            </div>
+          </div>
+        `).join('');
+      },
+
+      renderJobsList() {
+        const keyword = (document.getElementById('filter-jobs-keyword')?.value || '').toLowerCase();
+        const village = document.getElementById('filter-jobs-village')?.value || '';
+        const workType = document.getElementById('filter-jobs-worktype')?.value || '';
+
+        let list = this.data.jobs.filter(j => {
+          const matchKw = !keyword || j.crop.toLowerCase().includes(keyword) || j.workType.toLowerCase().includes(keyword) || j.village.toLowerCase().includes(keyword);
+          const matchVil = !village || j.village === village;
+          const matchWork = !workType || j.workType === workType;
+          return matchKw && matchVil && matchWork;
+        });
+
+        document.getElementById('jobs-count-text').textContent = `Showing ${list.length} farm jobs found`;
+        const container = document.getElementById('jobs-cards-container');
+
+        const currentUser = this.data.currentUser;
+
+        // Post job CTA button depending on user role
+        const ctaContainer = document.getElementById('post-job-cta');
+        if (currentUser && (currentUser.role === 'farmer' || currentUser.role === 'admin')) {
+          ctaContainer.innerHTML = `<button class="btn btn-warning text-dark fw-bold" onclick="App.showView('post-job')">➕ Post a Job Opening</button>`;
+        } else {
+          ctaContainer.innerHTML = '';
+        }
+
+        if (list.length === 0) {
+          container.innerHTML = `
+            <div class="col-12 text-center py-5 bg-white rounded shadow-sm p-4">
+              <span style="font-size: 3rem;">🌾</span>
+              <h4 class="fw-bold text-secondary mt-2">No farm jobs found</h4>
+              <p class="text-muted">Try changing your search filters.</p>
+              <button class="btn btn-success fw-bold" onclick="App.resetJobFilters()">Reset Filters</button>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = list.map(j => {
+          let actionHtml = '';
+
+          if (currentUser && currentUser.role === 'labourer') {
+            const existingApp = this.data.applications.find(a => a.jobId === j.id && a.labourerId === currentUser.id);
+            if (existingApp) {
+              if (existingApp.status === 'Accepted') {
+                actionHtml = `<div class="alert alert-success py-2 px-3 small mb-0 fw-bold text-center">🎉 Application Accepted! Farmer will call you.</div>`;
+              } else {
+                actionHtml = `<div class="alert alert-secondary py-2 px-3 small mb-0 fw-bold text-center">⏳ Interest Expressed (${existingApp.status})</div>`;
+              }
+            } else {
+              actionHtml = `<button class="btn btn-success fw-bold w-100 py-2" onclick="App.expressInterest(${j.id})">🌾 Express Interest (Apply)</button>`;
+            }
+          } else if (currentUser && currentUser.role === 'farmer') {
+            if (currentUser.id === j.farmerId) {
+              actionHtml = `<button class="btn btn-sm btn-outline-warning text-dark fw-bold w-100" onclick="App.showView('my-jobs')">📋 Manage In My Posted Jobs</button>`;
+            } else {
+              actionHtml = `<span class="badge bg-light text-muted w-100 py-2 border">Posted by Farmer: ${j.farmerName}</span>`;
+            }
+          } else {
+            actionHtml = `<button class="btn btn-outline-success fw-bold w-100 py-2" onclick="App.showView('login')">🔑 Login as Labourer to Apply</button>`;
+          }
+
+          return `
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="farm-job-card">
+                <div>
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <span class="badge bg-success-subtle text-success border border-success fw-bold">🌱 ${j.crop}</span>
+                    <span class="${j.is_demo ? 'badge-demo' : 'badge-new'}">${j.is_demo ? 'SAMPLE DEMO DATA' : 'NEW'}</span>
+                  </div>
+                  <h5 class="fw-bold mb-1">${j.workType}</h5>
+                  <div class="text-muted small mb-3">📍 <strong>${j.village}</strong> • Farmer: ${j.farmerName}</div>
+                  <div class="d-flex align-items-center justify-content-between mb-3 bg-light p-2 rounded">
+                    <div>
+                      <span class="small text-muted d-block">Wage:</span>
+                      <span class="wage-badge">₹ ${j.dailyWage} / day</span>
+                    </div>
+                    <div class="text-end">
+                      <span class="small text-muted d-block">Workers:</span>
+                      <span class="badge bg-white text-dark border">👥 ${j.workersNeeded} needed</span>
+                    </div>
+                  </div>
+                  <div class="small mb-3">
+                    📅 Date: <strong>${j.workDate}</strong>
+                    ${j.foodProvided ? ' • 🍲 Lunch' : ''}
+                    ${j.transportProvided ? ' • 🚜 Transport' : ''}
+                  </div>
+                  ${j.notes ? `<p class="small text-muted mb-3 bg-light p-2 rounded"><em>"${j.notes}"</em></p>` : ''}
+                </div>
+                <div class="border-top pt-3">
+                  ${actionHtml}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      resetJobFilters() {
+        if (document.getElementById('filter-jobs-keyword')) document.getElementById('filter-jobs-keyword').value = '';
+        if (document.getElementById('filter-jobs-village')) document.getElementById('filter-jobs-village').value = '';
+        if (document.getElementById('filter-jobs-worktype')) document.getElementById('filter-jobs-worktype').value = '';
+        this.renderJobsList();
+      },
+
+      renderLabourersList() {
+        const skill = document.getElementById('filter-labourers-skill')?.value || '';
+        const village = document.getElementById('filter-labourers-village')?.value || '';
+
+        let list = this.data.users.filter(u => u.role === 'labourer' && u.active);
+        if (village) list = list.filter(u => u.village === village);
+        if (skill) list = list.filter(u => (u.skills || []).some(s => s.toLowerCase().includes(skill.toLowerCase())));
+
+        document.getElementById('labourers-count-text').textContent = `Showing ${list.length} available labourers`;
+        const container = document.getElementById('labourers-cards-container');
+
+        if (list.length === 0) {
+          container.innerHTML = `
+            <div class="col-12 text-center py-5 bg-white rounded shadow-sm p-4">
+              <span style="font-size: 3rem;">🚜</span>
+              <h4 class="fw-bold text-secondary mt-2">No labourers found</h4>
+              <p class="text-muted">Try clearing your skill or village filters.</p>
+              <button class="btn btn-success fw-bold" onclick="App.resetLabourerFilters()">Reset Filters</button>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = list.map(l => `
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="labourer-profile-card">
+              <div>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="fw-bold mb-0">👤 ${l.name}</h5>
+                  <span class="${l.is_demo ? 'badge-demo' : 'badge-new'}">${l.is_demo ? 'SAMPLE DEMO DATA' : 'NEW'}</span>
+                </div>
+                <div class="text-muted small mb-2">📍 <strong>${l.village}</strong> • ${l.exp || 5} yrs exp.</div>
+                <div class="mb-3">
+                  <span class="wage-badge">₹ ${l.wage || 600} / day</span>
+                  <span class="badge bg-success-subtle text-success ms-1">${l.availability || 'Available Today'}</span>
+                </div>
+                <div class="mb-3">
+                  <span class="d-block small text-muted fw-bold mb-1">Skilled in:</span>
+                  ${(l.skills || []).map(s => `<span class="skill-tag">✓ ${s}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="border-top pt-2 mt-2">
+                <div class="d-flex align-items-center justify-content-between small text-muted bg-light p-2 rounded">
+                  <span>📞 ${this.maskPhone(l.phone, false)}</span>
+                  <span class="badge bg-secondary-subtle text-secondary border">🔒 Masked for Privacy</span>
+                </div>
+                <small class="text-muted d-block text-center mt-1" style="font-size: 0.72rem;">
+                  Direct phone shared when matched via posted jobs.
+                </small>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      },
+
+      resetLabourerFilters() {
+        if (document.getElementById('filter-labourers-skill')) document.getElementById('filter-labourers-skill').value = '';
+        if (document.getElementById('filter-labourers-village')) document.getElementById('filter-labourers-village').value = '';
+        this.renderLabourersList();
+      },
+
+      handleLabourerRegister(e) {
+        e.preventDefault();
+        const name = document.getElementById('labourer-name').value.trim();
+        const phone = document.getElementById('labourer-phone').value.trim();
+        const village = document.getElementById('labourer-village').value.trim();
+        const mandal = document.getElementById('labourer-mandal').value.trim();
+        const wage = parseInt(document.getElementById('labourer-wage').value);
+        const availability = document.getElementById('labourer-availability').value;
+        const exp = parseInt(document.getElementById('labourer-exp').value || 1);
+        const pin = document.getElementById('labourer-pin').value.trim();
+
+        const skillCheckboxes = document.querySelectorAll('input[name="labourer-skill"]:checked');
+        const selectedSkills = Array.from(skillCheckboxes).map(cb => cb.value);
+
+        if (!name || phone.length !== 10 || !village || !pin || selectedSkills.length === 0) {
+          this.showAlert("Please fill all required fields and select at least one skill.", "danger");
+          return;
+        }
+
+        if (this.data.users.some(u => u.phone === phone)) {
+          this.showAlert("This mobile number is already registered! Please login.", "warning");
+          this.showView('login');
+          return;
+        }
+
+        const newUser = {
+          id: Date.now(),
+          name, phone, pin, village, mandal,
+          role: 'labourer',
+          skills: selectedSkills,
+          wage, availability, exp,
+          is_demo: false, active: true
+        };
+
+        this.data.users.push(newUser);
+        this.data.currentUser = newUser;
+        this.saveStorage();
+        this.updateAuthUI();
+        this.showAlert(`Welcome ${name}! Labourer registration successful.`, "success");
+        this.showView('jobs');
+      },
+
+      handleFarmerRegister(e) {
+        e.preventDefault();
+        const name = document.getElementById('farmer-name').value.trim();
+        const phone = document.getElementById('farmer-phone').value.trim();
+        const village = document.getElementById('farmer-village').value.trim();
+        const mandal = document.getElementById('farmer-mandal').value.trim();
+        const acres = parseFloat(document.getElementById('farmer-acres').value || 1.0);
+        const farmname = document.getElementById('farmer-farmname').value.trim();
+        const pin = document.getElementById('farmer-pin').value.trim();
+
+        const cropCheckboxes = document.querySelectorAll('input[name="farmer-crop"]:checked');
+        const selectedCrops = Array.from(cropCheckboxes).map(cb => cb.value);
+
+        if (!name || phone.length !== 10 || !village || !pin) {
+          this.showAlert("Please fill all required fields with a valid 10-digit phone number.", "danger");
+          return;
+        }
+
+        if (this.data.users.some(u => u.phone === phone)) {
+          this.showAlert("This mobile number is already registered! Please login.", "warning");
+          this.showView('login');
+          return;
+        }
+
+        const newUser = {
+          id: Date.now(),
+          name, phone, pin, village, mandal, acres, farmname,
+          crops: selectedCrops.length ? selectedCrops : ["General Farming"],
+          role: 'farmer',
+          is_demo: false, active: true
+        };
+
+        this.data.users.push(newUser);
+        this.data.currentUser = newUser;
+        this.saveStorage();
+        this.updateAuthUI();
+        this.showAlert(`Welcome ${name}! Farmer registration successful.`, "success");
+        this.showView('post-job');
+      },
+
+      handlePostJob(e) {
+        e.preventDefault();
+        const user = this.data.currentUser;
+        if (!user || (user.role !== 'farmer' && user.role !== 'admin')) {
+          this.showAlert("Please log in as a farmer to post jobs.", "danger");
+          this.showView('login');
+          return;
+        }
+
+        const crop = document.getElementById('job-crop').value;
+        const workType = document.getElementById('job-worktype').value;
+        const village = document.getElementById('job-village').value.trim();
+        const workDate = document.getElementById('job-date').value;
+        const dailyWage = parseInt(document.getElementById('job-wage').value);
+        const workersNeeded = parseInt(document.getElementById('job-workers').value);
+        const foodProvided = document.getElementById('job-food').checked;
+        const transportProvided = document.getElementById('job-transport').checked;
+        const notes = document.getElementById('job-notes').value.trim();
+
+        if (!crop || !workType || !village || !workDate || dailyWage <= 0 || workersNeeded <= 0) {
+          this.showAlert("Please fill all job fields correctly.", "danger");
+          return;
+        }
+
+        const newJob = {
+          id: Date.now(),
+          farmerId: user.id,
+          farmerName: user.name,
+          farmerPhone: user.phone,
+          crop, workType, village, workDate,
+          dailyWage, workersNeeded,
+          foodProvided, transportProvided,
+          notes,
+          is_demo: false
+        };
+
+        this.data.jobs.unshift(newJob);
+        this.saveStorage();
+        this.showAlert("Job opening published successfully! Labourers can now apply.", "success");
+        this.showView('my-jobs');
+      },
+
+      expressInterest(jobId) {
+        const user = this.data.currentUser;
+        if (!user || user.role !== 'labourer') {
+          this.showAlert("Please log in as an agricultural labourer to express interest.", "warning");
+          this.showView('login');
+          return;
+        }
+
+        if (this.data.applications.some(a => a.jobId === jobId && a.labourerId === user.id)) {
+          this.showAlert("You have already expressed interest for this job.", "info");
+          return;
+        }
+
+        const job = this.data.jobs.find(j => j.id === jobId);
+        const newApp = {
+          id: Date.now(),
+          jobId,
+          labourerId: user.id,
+          labourerName: user.name,
+          labourerPhone: user.phone,
+          labourerVillage: user.village,
+          status: 'Pending',
+          appliedAt: new Date().toISOString().replace('T', ' ').slice(0, 16)
+        };
+
+        this.data.applications.push(newApp);
+        this.saveStorage();
+        this.showAlert(`Interest expressed successfully for ${job.crop} (${job.workType})!`, "success");
+        this.showView('my-applications');
+      },
+
+      renderMyJobs() {
+        const user = this.data.currentUser;
+        const container = document.getElementById('my-jobs-container');
+        if (!user) {
+          container.innerHTML = '<div class="alert alert-warning">Please login to view your jobs.</div>';
+          return;
+        }
+
+        const myJobs = this.data.jobs.filter(j => j.farmerId === user.id);
+        if (myJobs.length === 0) {
+          container.innerHTML = `
+            <div class="text-center py-5 bg-white rounded shadow-sm p-4">
+              <h4 class="fw-bold text-secondary">You haven't posted any jobs yet.</h4>
+              <button class="btn btn-warning text-dark fw-bold mt-2" onclick="App.showView('post-job')">➕ Post a Job Opening</button>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = myJobs.map(j => {
+          const apps = this.data.applications.filter(a => a.jobId === j.id);
+          return `
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden mb-4">
+              <div class="card-header bg-success text-white p-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div>
+                  <span class="badge bg-white text-success fw-bold me-2">🌱 ${j.crop}</span>
+                  <span class="${j.is_demo ? 'badge-demo' : 'badge-new'}">${j.is_demo ? 'DEMO' : 'NEW'}</span>
+                  <h4 class="fw-bold mb-0 mt-2 text-white">${j.workType} in ${j.village}</h4>
+                </div>
+                <div class="text-md-end text-white">
+                  <div class="h5 fw-bold mb-0 text-warning">₹ ${j.dailyWage} / day</div>
+                  <small>👥 ${j.workersNeeded} workers needed</small>
+                </div>
+              </div>
+
+              <div class="card-body p-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h6 class="fw-bold mb-0">👥 Interested Labourers (${apps.length})</h6>
+                  <button class="btn btn-sm btn-outline-danger py-0" onclick="App.deleteJob(${j.id})">🗑️ Delete Job</button>
+                </div>
+
+                ${apps.length === 0 ? '<p class="text-muted small mb-0">No labourers have expressed interest yet.</p>' : `
+                  <div class="row g-3">
+                    ${apps.map(a => `
+                      <div class="col-12 col-md-6">
+                        <div class="border rounded-3 p-3 bg-white h-100 d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                              <h6 class="fw-bold mb-0">👤 ${a.labourerName}</h6>
+                              <span class="badge ${a.status === 'Accepted' ? 'bg-success' : 'bg-warning text-dark'}">${a.status}</span>
+                            </div>
+                            <small class="text-muted d-block mb-2">📍 ${a.labourerVillage}</small>
+                          </div>
+
+                          <div class="border-top pt-2">
+                            ${a.status === 'Accepted' ? `
+                              <div class="bg-success-subtle p-2 rounded d-flex justify-content-between align-items-center">
+                                <div>
+                                  <span class="small text-success fw-bold d-block">📞 Unlocked Phone:</span>
+                                  <strong>${a.labourerPhone}</strong>
+                                </div>
+                                <a href="tel:${a.labourerPhone}" class="btn btn-sm btn-success fw-bold">📞 Call Worker</a>
+                              </div>
+                            ` : `
+                              <div class="d-flex justify-content-between align-items-center">
+                                <span class="small text-muted">🔒 ${App.maskPhone(a.labourerPhone, false)}</span>
+                                <div class="d-flex gap-2">
+                                  <button class="btn btn-sm btn-success fw-bold" onclick="App.updateAppStatus(${a.id}, 'Accepted')">✓ Accept</button>
+                                  <button class="btn btn-sm btn-outline-danger" onclick="App.updateAppStatus(${a.id}, 'Rejected')">✕ Decline</button>
+                                </div>
+                              </div>
+                            `}
+                          </div>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                `}
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      deleteJob(jobId) {
+        if (confirm("Delete this job opening?")) {
+          this.data.jobs = this.data.jobs.filter(j => j.id !== jobId);
+          this.data.applications = this.data.applications.filter(a => a.jobId !== jobId);
+          this.saveStorage();
+          this.showAlert("Job listing deleted.", "info");
+          this.renderMyJobs();
+        }
+      },
+
+      updateAppStatus(appId, newStatus) {
+        const app = this.data.applications.find(a => a.id === appId);
+        if (app) {
+          app.status = newStatus;
+          this.saveStorage();
+          this.showAlert(`Application updated to ${newStatus}. Phone number is now accessible.`, "success");
+          this.renderMyJobs();
+        }
+      },
+
+      renderMyApplications() {
+        const user = this.data.currentUser;
+        const container = document.getElementById('my-apps-container');
+        if (!user) {
+          container.innerHTML = '<div class="alert alert-warning">Please login to view your applications.</div>';
+          return;
+        }
+
+        const myApps = this.data.applications.filter(a => a.labourerId === user.id);
+        if (myApps.length === 0) {
+          container.innerHTML = `
+            <div class="col-12 text-center py-5 bg-white rounded shadow-sm p-4">
+              <h4 class="fw-bold text-secondary">No work requests submitted yet.</h4>
+              <button class="btn btn-success fw-bold mt-2" onclick="App.showView('jobs')">🔍 Search Farm Jobs</button>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = myApps.map(a => {
+          const job = this.data.jobs.find(j => j.id === a.jobId) || { crop: "Farm Job", workType: "Farm Work", village: "Village", dailyWage: 600, farmerName: "Farmer", farmerPhone: "9848011223" };
+          return `
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="farm-job-card">
+                <div>
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <span class="badge bg-success-subtle text-success border border-success fw-bold">🌱 ${job.crop}</span>
+                    <span class="badge ${a.status === 'Accepted' ? 'bg-success' : 'bg-warning text-dark'}">${a.status}</span>
+                  </div>
+                  <h5 class="fw-bold mb-1">${job.workType}</h5>
+                  <div class="text-muted small mb-2">📍 <strong>${job.village}</strong> • Farmer: ${job.farmerName}</div>
+                  <div class="wage-badge mb-3">₹ ${job.dailyWage} / day</div>
+                </div>
+
+                <div class="border-top pt-3">
+                  ${a.status === 'Accepted' ? `
+                    <div class="bg-success-subtle p-3 rounded text-center">
+                      <div class="text-success fw-bold mb-1">✓ Application Accepted!</div>
+                      <h6 class="fw-bold text-dark mb-2">👤 ${job.farmerName}</h6>
+                      <a href="tel:${job.farmerPhone}" class="btn btn-success fw-bold w-100">📞 Call Farmer: ${job.farmerPhone}</a>
+                    </div>
+                  ` : `
+                    <div class="alert alert-warning py-2 small mb-0 text-center">
+                      ⏳ Waiting for farmer confirmation. Phone revealed once accepted.
+                    </div>
+                  `}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      renderAdminView() {
+        const labourers = this.data.users.filter(u => u.role === 'labourer');
+        const farmers = this.data.users.filter(u => u.role === 'farmer');
+        const jobs = this.data.jobs;
+        const apps = this.data.applications;
+
+        document.getElementById('admin-stat-labourers').textContent = labourers.length;
+        document.getElementById('admin-stat-farmers').textContent = farmers.length;
+        document.getElementById('admin-stat-jobs').textContent = jobs.length;
+        document.getElementById('admin-stat-apps').textContent = apps.length;
+
+        // Labourers table
+        document.getElementById('admin-labourers-table').innerHTML = labourers.map(l => `
+          <tr>
+            <td><strong>${l.name}</strong> ${l.is_demo ? '<span class="badge-demo">DEMO</span>' : '<span class="badge-new">NEW</span>'}</td>
+            <td><code>${l.phone}</code></td>
+            <td>📍 ${l.village}</td>
+            <td>${(l.skills || []).slice(0, 2).join(', ')}</td>
+            <td class="fw-bold text-success">₹ ${l.wage || 600}</td>
+            <td><button class="btn btn-sm btn-outline-danger py-0" onclick="App.deleteUser(${l.id})">Delete</button></td>
+          </tr>
+        `).join('');
+
+        // Farmers table
+        document.getElementById('admin-farmers-table').innerHTML = farmers.map(f => `
+          <tr>
+            <td><strong>${f.name}</strong> ${f.is_demo ? '<span class="badge-demo">DEMO</span>' : '<span class="badge-new">NEW</span>'}</td>
+            <td><code>${f.phone}</code></td>
+            <td>📍 ${f.village}</td>
+            <td>${f.acres || 1} Acres</td>
+            <td>${(f.crops || []).join(', ')}</td>
+            <td><button class="btn btn-sm btn-outline-danger py-0" onclick="App.deleteUser(${f.id})">Delete</button></td>
+          </tr>
+        `).join('');
+
+        // Jobs table
+        document.getElementById('admin-jobs-table').innerHTML = jobs.map(j => `
+          <tr>
+            <td><strong>${j.crop}</strong> - ${j.workType}</td>
+            <td>${j.farmerName}</td>
+            <td>📍 ${j.village}</td>
+            <td>${j.workDate}</td>
+            <td class="fw-bold text-success">₹ ${j.dailyWage}</td>
+            <td><button class="btn btn-sm btn-outline-danger py-0" onclick="App.deleteJob(${j.id})">Delete</button></td>
+          </tr>
+        `).join('');
+      },
+
+      deleteUser(userId) {
+        if (confirm("Remove this user?")) {
+          this.data.users = this.data.users.filter(u => u.id !== userId);
+          this.saveStorage();
+          this.renderAdminView();
+          this.showAlert("User removed from prototype storage.", "info");
+        }
+      },
+
+      handleLogin(e) {
+        e.preventDefault();
+        const phone = document.getElementById('login-phone').value.trim();
+        const pin = document.getElementById('login-pin').value.trim();
+
+        const user = this.data.users.find(u => u.phone === phone && u.pin === pin);
+        if (user) {
+          this.data.currentUser = user;
+          this.saveStorage();
+          this.updateAuthUI();
+          this.showAlert(`Welcome back, ${user.name}!`, "success");
+          if (user.role === 'farmer') this.showView('my-jobs');
+          else if (user.role === 'labourer') this.showView('jobs');
+          else if (user.role === 'admin') this.showView('admin');
+          else this.showView('home');
+        } else {
+          this.showAlert("Invalid phone number or PIN. (Demo accounts use PIN: 1234)", "danger");
+        }
+      },
+
+      loginDemo(role) {
+        let user = null;
+        if (role === 'farmer') user = this.data.users.find(u => u.role === 'farmer');
+        else if (role === 'labourer') user = this.data.users.find(u => u.role === 'labourer');
+        else if (role === 'admin') user = this.data.users.find(u => u.role === 'admin');
+
+        if (user) {
+          this.data.currentUser = user;
+          this.saveStorage();
+          this.updateAuthUI();
+          this.showAlert(`Switched to Demo Account: ${user.name} (${user.role.toUpperCase()})`, "success");
+          if (user.role === 'farmer') this.showView('my-jobs');
+          else if (user.role === 'labourer') this.showView('jobs');
+          else if (user.role === 'admin') this.showView('admin');
+        }
+      },
+
+      logout() {
+        this.data.currentUser = null;
+        this.saveStorage();
+        this.updateAuthUI();
+        this.showAlert("You have been logged out.", "info");
+        this.showView('home');
+      },
+
+      updateAuthUI() {
+        const user = this.data.currentUser;
+        const authButtons = document.getElementById('auth-buttons');
+        const userBadge = document.getElementById('user-profile-badge');
+
+        const navPostJob = document.getElementById('nav-post-job-li');
+        const navMyJobs = document.getElementById('nav-my-jobs-li');
+        const navMyApps = document.getElementById('nav-my-apps-li');
+        const navAdmin = document.getElementById('nav-admin-li');
+
+        if (user) {
+          authButtons.classList.add('d-none');
+          userBadge.classList.remove('d-none');
+          document.getElementById('user-display-name').textContent = user.name.split(' ')[0];
+          document.getElementById('user-display-role').textContent = user.role.toUpperCase();
+          document.getElementById('user-drop-name').textContent = user.name;
+          document.getElementById('user-drop-loc').textContent = `${user.village} • ${user.role}`;
+
+          navPostJob.classList.toggle('d-none', !(user.role === 'farmer' || user.role === 'admin'));
+          navMyJobs.classList.toggle('d-none', !(user.role === 'farmer' || user.role === 'admin'));
+          navMyApps.classList.toggle('d-none', user.role !== 'labourer');
+          navAdmin.classList.toggle('d-none', user.role !== 'admin');
+        } else {
+          authButtons.classList.remove('d-none');
+          userBadge.classList.add('d-none');
+          navPostJob.classList.add('d-none');
+          navMyJobs.classList.add('d-none');
+          navMyApps.classList.add('d-none');
+          navAdmin.classList.add('d-none');
+        }
+      }
+    };
+
+    // Initialize Application upon DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      App.init();
+    });
+  </script>
+</body>
+</html>
